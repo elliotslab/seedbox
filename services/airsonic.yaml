@@ -1,0 +1,24 @@
+services:
+  airsonic:
+    image: ghcr.io/linuxserver/airsonic
+    container_name: airsonic
+    restart: always
+    volumes:
+      - configairsonic:/config
+      - torrents:/media
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - JAVA_OPTS=-Dserver.use-forward-headers=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.airsonic.rule=Host(`airsonic.${TRAEFIK_DOMAIN}`)"
+      - "traefik.http.routers.airsonic.middlewares=common-auth@file"
+      - "traefik.http.routers.airsonic.middlewares.customFrameOptionValue=false"
+
+volumes:
+  configairsonic:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /data/config/airsonic

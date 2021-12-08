@@ -1,0 +1,23 @@
+services:
+  sabnzbd:
+    image: ghcr.io/linuxserver/sabnzbd
+    container_name: sabnzbd
+    restart: always
+    volumes:
+      - torrents:/torrents
+      - configsabnzbd:/config
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.${TRAEFIK_DOMAIN}`)"
+      - "traefik.http.routers.sabnzbd.middlewares=common-auth@file"
+
+
+volumes:
+  configsabnzbd:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /data/config/sabnzbd

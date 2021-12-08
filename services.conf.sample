@@ -17,3 +17,5 @@ nextcloud: enable
 portainer: enable
 netdata: enable
 duplicati: enable
+sabnzbd: enable
+airsonic: enable
