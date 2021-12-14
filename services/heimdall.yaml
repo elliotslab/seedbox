@@ -6,7 +6,7 @@ services:
     volumes:
       - configheimdall:/config
       - /etc/localtime:/etc/localtime:ro
-    environments:
+    environment:
       - PUID=${PUID}
       - PGID=${PGID}
     labels:
