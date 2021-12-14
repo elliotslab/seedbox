@@ -1,0 +1,21 @@
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    restart: always
+    volumes:
+      - configheimdall:/config
+      - /etc/localtime:/etc/localtime:ro
+    environments:
+      - PUID=${PUID}
+      - PGID=${PGID}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.heimdall.rule=Host(`heimdall.${TRAEFIK_DOMAIN}`)"
+      - "traefik.http.routers.heimdall.middlewares=common-auth@file"
+
+volumes:
+  configheimdall:
+    driver: local-persist
+    driver_opts:
+      mountpoint=: /data/config/heimdall
