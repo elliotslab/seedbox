@@ -1,0 +1,28 @@
+version: "3.0"
+services:
+  poste:
+    image: analogic/poste.io
+    hostname: mail.elliotlab.com
+    container_name: mailserver
+    network_mode: host
+    restart: always
+    volumes:
+      - configposte:/etc
+      - emaildata:/data
+    environment:
+      - TZ=${TZ}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.poste.rule=Host(`mail.${TRAEFIK_DOMAIN}`)"
+
+volumes:
+  configposte:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /data/config/poste
+  emaildata:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /data/email
+
+
