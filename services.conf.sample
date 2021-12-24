@@ -20,3 +20,4 @@ duplicati: enable
 sabnzbd: enable
 airsonic: enable
 jellyfin: enable
+poste: disable
