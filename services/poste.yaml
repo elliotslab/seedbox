@@ -4,16 +4,25 @@ services:
     image: analogic/poste.io
     hostname: mail.elliotlab.com
     container_name: mailserver
-    network_mode: host
     restart: always
     volumes:
       - configposte:/etc
       - emaildata:/data
     environment:
       - TZ=${TZ}
+      - HTTPS=OFF
+    ports:
+      - "25:25"
+      - "110:110"
+      - "143:143"
+      - "587:587"
+      - "993:993"
+      - "995:995"
+      - "4190:4190"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.poste.rule=Host(`mail.${TRAEFIK_DOMAIN}`)"
+      - "traefik.http.services.poste.loadbalancer.server.port=80"
 
 volumes:
   configposte:
