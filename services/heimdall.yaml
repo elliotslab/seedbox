@@ -9,13 +9,14 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
+      - TZ=America/Santo_Domingo
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.heimdall.rule=Host(`heimdall.${TRAEFIK_DOMAIN}`)"
+      - "traefik.http.routers.heimdall.rule=Host(`${TRAEFIK_DOMAIN}`)"
       - "traefik.http.routers.heimdall.middlewares=common-auth@file"
 
 volumes:
   configheimdall:
     driver: local-persist
     driver_opts:
-      mountpoint=: /data/config/heimdall
+      mountpoint: /data/config/heimdall
