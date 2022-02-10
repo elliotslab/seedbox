@@ -21,3 +21,5 @@ sabnzbd: enable
 airsonic: enable
 jellyfin: enable
 poste: disable
+adguard: enable
+readarr: enable
