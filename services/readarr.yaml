@@ -1,0 +1,23 @@
+services:
+  readarr:
+    image: ghcr.io/linuxserver/readarr:amd64-nightly
+    container_name: readarr
+    hostname: readarr
+    restart: always
+    volumes:
+        - configreadarr:/config
+        - torrents:/torrents
+    environment:
+        - PUID=${PUID}
+        - PGID={PGID}
+        - TZ=${TZ}
+    labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.readarr.rule=Host(`readarr.${TRAEFIK_DOMAIN}`)"
+        - "traefik.http.routers.readarr.middlewares=common-auth@file"
+
+volumes:
+    configreadarr:
+        driver: local-persist
+        driver_opts:
+            mountpoint: /data/config/readarr
