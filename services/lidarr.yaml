@@ -2,6 +2,7 @@ services:
   lidarr:
     image: ghcr.io/linuxserver/lidarr:develop
     container_name: lidarr
+    hostname: lidarr
     restart: always
     volumes:
       - configlidarr:/config

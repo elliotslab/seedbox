@@ -2,6 +2,7 @@ services:
   traefik:
     image: traefik
     container_name: traefik
+    hostname: traefik
     restart: always
     command: 
       - --certificatesresolvers.le.acme.email=${ACME_MAIL}

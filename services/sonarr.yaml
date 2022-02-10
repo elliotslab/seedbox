@@ -2,6 +2,7 @@ services:
   sonarr:
     image: ghcr.io/linuxserver/sonarr:develop
     container_name: sonarr
+    hostname: sonarr
     restart: always
     volumes:
       - configsonarr:/config

@@ -2,6 +2,7 @@ services:
   tdarr:
     image: haveagitgat/tdarr:latest
     container_name: tdarr
+    hostname: tdarr
     restart: always
     environment:
       - PUID=${PUID}

@@ -2,6 +2,7 @@ services:
   heimdall:
     image: lscr.io/linuxserver/heimdall:latest
     container_name: heimdall
+    hostname: heimdall
     restart: always
     volumes:
       - configheimdall:/config

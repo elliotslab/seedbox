@@ -2,6 +2,7 @@ services:
   bazarr:
     image: ghcr.io/linuxserver/bazarr
     container_name: bazarr
+    hostname: bazarr
     restart: always
     volumes:
       - torrents:/torrents

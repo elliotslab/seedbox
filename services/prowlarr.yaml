@@ -2,6 +2,7 @@ services:
   prowlarr:
     image: ghcr.io/linuxserver/prowlarr:develop
     container_name: prowlarr
+    hostname: prowlarr
     restart: always
     volumes:
       - configprowlarr:/config

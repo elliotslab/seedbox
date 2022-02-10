@@ -21,6 +21,7 @@ services:
       - nextcloud-db
     image: linuxserver/nextcloud
     container_name: nextcloud
+    hostname: nextcloud
     restart: always
     environment:
       - PGID=${PGID}

@@ -2,6 +2,7 @@ services:
   deluge:
     image: ghcr.io/linuxserver/deluge
     container_name: deluge
+    hostname: deluge
     restart: always
     volumes:
       - torrents:/torrents

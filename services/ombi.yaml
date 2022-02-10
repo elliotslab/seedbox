@@ -2,6 +2,7 @@ services:
   ombi:
     image: ghcr.io/linuxserver/ombi
     container_name: ombi
+    hostname: ombi
     restart: always
     volumes:
       - configombi:/config

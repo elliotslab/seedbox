@@ -2,6 +2,7 @@ services:
   sabnzbd:
     image: ghcr.io/linuxserver/sabnzbd
     container_name: sabnzbd
+    hostname: sabnzbd
     restart: always
     volumes:
       - torrents:/torrents

@@ -2,6 +2,7 @@ services:
   jackett:
     image: ghcr.io/linuxserver/jackett
     container_name: jackett
+    hostname: jackett
     restart: always
     volumes:
       - config:/config

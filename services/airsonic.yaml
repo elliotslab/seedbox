@@ -1,7 +1,8 @@
 services:
   airsonic:
-    image: ghcr.io/linuxserver/airsonic
+    image: ghcr.io/linuxserver/airsonic-advanced
     container_name: airsonic
+    hostname: airsonic
     restart: always
     volumes:
       - configairsonic:/config
@@ -15,7 +16,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.airsonic.rule=Host(`airsonic.${TRAEFIK_DOMAIN}`)"
       - "traefik.http.routers.airsonic.middlewares=common-auth@file"
-      - "traefik.http.routers.airsonic.middlewares.customFrameOptionValue=false"
+      - "traefik.http.services.airsonic.loadbalancer.server.port=4040"
 
 volumes:
   configairsonic:

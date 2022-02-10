@@ -2,6 +2,7 @@ services:
   flood:
     image: jesec/flood:latest
     container_name: flood
+    hostname: flood
     restart: always
     depends_on:
       - deluge

@@ -2,6 +2,7 @@ services:
   duplicati:
     image: ghcr.io/linuxserver/duplicati
     container_name: duplicati
+    hostname: duplicati
     restart: unless-stopped
     environment:
       - PUID=${PUID}

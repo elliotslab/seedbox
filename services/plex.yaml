@@ -2,6 +2,7 @@ services:
   plex:
     image: ghcr.io/linuxserver/plex
     container_name: plex
+    hostname: plex
     restart: always
     ports:
       - "32400:32400"

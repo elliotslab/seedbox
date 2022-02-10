@@ -2,8 +2,8 @@ version: "3.0"
 services:
   poste:
     image: analogic/poste.io
-    hostname: mail.elliotlab.com
     container_name: mailserver
+    hostname: mail.elliotlab.com
     restart: always
     volumes:
       - configposte:/etc
