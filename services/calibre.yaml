@@ -1,0 +1,25 @@
+services:
+  calibre:
+    image: ghcr.io/linuxserver/calibre-web
+    container_name: calibre
+    hostname: calibre
+    restart: always
+    volumes:
+      - configcalibre:/config
+      - library:/library
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.calibre.rule=Host(`calibre.${TRAEFIK_DOMAIN}`)"
+volumes:
+  configcalibre:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /data/config/calibre
+  library:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /data/library
