@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  adguard:
+    image: adguard/adguardhome
+    container_name: adguard
+    hostname: adguard
+    restart: always
+    volumes:
+      - configadguard:/opt/adguardhome
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 853:853/tcp
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adguard.rule=Host(`adguard.${TRAEFIK_DOMAIN}`)"
+      - "traefik.http.services.adguard.loadbalancer.server.port=80"
+volumes:
+    configadguard:
+      driver: local-persist
+      driver_opts:
+          mountpoint: /data/config/adguard
