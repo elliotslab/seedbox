@@ -1,0 +1,24 @@
+services:
+  thelounge:
+    image: ghcr.io/linuxserver/thelounge:latest
+    container_name: thelounge
+    hostname: thelounge
+    restart: always
+    volumes:
+      - configthelounge:/config
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - PGID=${PGID}
+      - PUID=${PUID}
+      - TZ=${TZ}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.thelounge.rule=Host(`thelounge.${TRAEFIK_DOMAINA`)"
+      - "traefik.http.routerrs.sonarr.middlewares=common-auth@file"
+
+
+volumes:
+  configthelounge:
+    driver: local-persist
+    driver_opts:
+      mountpoint: /data/config/thelounge
