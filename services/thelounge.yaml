@@ -13,8 +13,8 @@ services:
       - TZ=${TZ}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.thelounge.rule=Host(`thelounge.${TRAEFIK_DOMAINA`)"
-      - "traefik.http.routerrs.sonarr.middlewares=common-auth@file"
+      - "traefik.http.routers.thelounge.rule=Host(`thelounge.${TRAEFIK_DOMAIN}`)"
+      - "traefik.http.routers.thelounge.middlewares=common-auth@file"
 
 
 volumes:
